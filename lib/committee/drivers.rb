@@ -49,7 +49,7 @@ module Committee
     # @param [Hash] hash
     # @return [Committee::Driver]
     def self.load_from_data(hash, schema_path = nil)
-      if hash['openapi']&.start_with?('3.0.')
+      if hash['openapi']&.start_with?('3.')
         openapi = OpenAPIParser.parse_with_filepath(hash, schema_path)
         return Committee::Drivers::OpenAPI3::Driver.new.parse(openapi)
       end
